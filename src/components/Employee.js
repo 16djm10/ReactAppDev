@@ -1,8 +1,10 @@
-function Employee() {
+function Employee(props) {
   return (
-    <div>
-      <h3>Here is an employee</h3>
-    </div>
+    <>
+      <h3>Employee {props.name}</h3>
+      
+      <p>{props.role ? props.role : "No role assigned"}</p> {/* variable ? if true: else */}
+    </>
   );
 }
 
