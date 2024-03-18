@@ -1,3 +1,5 @@
+import EditEmployee from "./EditEmployeesModal";
+
 function Employee(props) {
   return (
     <>
@@ -12,7 +14,10 @@ function Employee(props) {
             <p className="text-lg text-black font-semibold">{props.name}</p>
             <p className="text-slate-500 font-medium">{props.role ? props.role : 'Add role'}</p>
           </div>
-          <button className="px-4 py-1 text-sm text-purple-600 font-semibold rounded-full border border-purple-200 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2">Update</button>
+
+          <EditEmployee />
+
+          
         </div>
       </div>
     </>
