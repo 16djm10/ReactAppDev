@@ -1,21 +1,23 @@
 import './App.css';
 
+// importing components
+import Employee from './components/Employee';
+
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  //you can also declare variables here
+  const showEmployees = true;
+  return ( // this returns the JSX that will be rendered to the DOM
+    // this is the root element
+    <div className="App">   
+        {showEmployees ? 
+            <>
+              <Employee />
+              <Employee />
+              <Employee />
+            </>
+          :
+            <h3>No access allowed</h3>
+        };
     </div>
   );
 }
