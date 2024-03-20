@@ -13,7 +13,9 @@ function EditEmployee(props) {
 
   return (
     <>
-      <button onClick={handleShow} className="px-4 py-1 text-sm text-purple-600 font-semibold rounded-full border border-purple-200 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2">Update</button>
+      <button onClick={handleShow} className="px-4 py-1 text-sm text-purple-600 font-semibold rounded-full border border-purple-200 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2">
+        Update
+      </button>
 
       <Modal
         show={show}
@@ -25,7 +27,16 @@ function EditEmployee(props) {
           <Modal.Title>Update Employee</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        <form id="edit-modal" className="w-full max-w-sm">
+        <form 
+          onSubmit={(e) => {
+            e.preventDefault(); // prevents page refresh
+            console.log("from edit emps");
+            console.log(props.id, name, role);
+            props.updateEmployee(props.id, name, role);
+            handleClose();
+          }}
+        
+          id="edit-modal" className="w-full max-w-sm">
             <div className="md:flex md:items-center mb-6">
                 <div className="md:w-1/3">
                     <label 
@@ -73,7 +84,12 @@ function EditEmployee(props) {
           >
             Close
           </button>
-          <button className='bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded' form="edit-modal">
+          <button 
+            
+            className='bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded' 
+            form="edit-modal"
+            
+            >
             Update
           </button>
         </Modal.Footer>

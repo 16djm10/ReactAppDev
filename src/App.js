@@ -8,31 +8,49 @@ function App() {
   const showEmployees = true;
   const [employees, setEmployees] = useState([
       {
+        id: 1,
         name: "David", 
         role: "R&D Engineer", 
         img: "https://images.pexels.com/photos/3777943/pexels-photo-3777943.jpeg"
       },
       {
+        id: 2,
         name: "Caleb", 
         role: "Developer", 
         img: "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg"
       },
       {
+        id: 3,
         name: "Jane", 
         role: "Manager", 
         img: "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg"
       },
       {
+        id: 4,
         name: "Abby",
         role: "HR",
         img: "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg"
       },
       {
+        id: 5,
         name: "Josh",
         role: "IT Support",
         img: "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg"
       }
     ]); // setting the default value of the employees state
+
+  // creating a function to pass to modal to update employee informatoin
+  function updateEmployee(id, newName, newRole) {
+      const updatedEmployees = employees.map((employee) => {
+        if (employee.id === id) {
+          return { ...employee, name: newName, role: newRole };// ... expands the employee object
+        }
+        return employee;
+      });
+      setEmployees(updatedEmployees); // the setter for the employees state
+
+  }
+
   return (
     <div className="App">   
         {showEmployees ? 
@@ -48,7 +66,15 @@ function App() {
                 {/* map allows us to loop through the employees array */}
                 {employees.map((employee) => {
                   return (
-                    <Employee key={uuidv4()} name={employee.name} role={employee.role} img={employee.img} alt={employee.name}
+                    <Employee 
+                      //key={uuidv4()} 
+                      key={employee.id}
+                      id={employee.id}
+                      name={employee.name} 
+                      role={employee.role} 
+                      img={employee.img} 
+                      alt={employee.name}
+                      updateEmployee={updateEmployee}// passing the function to the Employee component
                     />
                   );
                 })}

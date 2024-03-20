@@ -15,7 +15,12 @@ function Employee(props) {
             <p className="text-slate-500 font-medium">{props.role ? props.role : 'Add role'}</p>
           </div>
           
-          <EditEmployee name={props.name} role={props.role}/>
+          <EditEmployee 
+            id={props.id}
+            name={props.name} 
+            role={props.role}
+            updateEmployee={props.updateEmployee}// this time we have to say props because we are passing the function from the parent component
+          />
 
           
         </div>
