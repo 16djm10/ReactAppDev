@@ -2,6 +2,7 @@ import './index.css'; // importing the css file
 import Employee from './components/Employee';// importing components
 import { useState } from 'react'; // import the useState hook
 import { v4 as uuidv4 } from 'uuid'; // import the uuid/guid package
+import AddEmployee from './components/AddEmployeeModal'; // importing the AddEmployeeModal component
 
 function App() {
   const [role, setRole] = useState('dev'); // dev is just default value
@@ -48,8 +49,17 @@ function App() {
         return employee;
       });
       setEmployees(updatedEmployees); // the setter for the employees state
-
   }
+
+  function newEmployee(name, role, img) {
+    const newEmployee = {
+      id: uuidv4(), 
+      name, 
+      role, 
+      img};
+    setEmployees([...employees, newEmployee]);// this accesses the list of employes directly
+  }
+
 
   return (
     <div className="App">   
@@ -78,6 +88,11 @@ function App() {
                     />
                   );
                 })}
+              </div>
+              <div className="flex justify-center">
+                <AddEmployee 
+                  newEmployee={newEmployee}
+                />
               </div>
             </>
           :
